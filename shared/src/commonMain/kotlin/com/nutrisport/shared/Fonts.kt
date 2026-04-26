@@ -1,4 +1,4 @@
-package com.nutrisport.shared.fonts
+package com.nutrisport.shared
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily
