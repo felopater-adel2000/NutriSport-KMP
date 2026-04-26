@@ -23,6 +23,6 @@ import nutrisport.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
-
+        val file = java.io.File("test.txt")
     }
 }
