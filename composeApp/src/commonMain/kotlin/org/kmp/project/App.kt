@@ -14,6 +14,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mmk.kmpauth.google.GoogleAuthCredentials
+import com.mmk.kmpauth.google.GoogleAuthProvider
+import com.nutrisport.navigation.SetupNavGraph
+import com.nutrisport.shared.Constant.WEB_CLIENT_ID
 import org.jetbrains.compose.resources.painterResource
 
 import nutrisport.composeapp.generated.resources.Res
@@ -23,6 +27,14 @@ import nutrisport.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
-        val file = java.io.File("test.txt")
+
+        var appReady by remember { mutableStateOf(false) }
+
+        LaunchedEffect(Unit) {
+            GoogleAuthProvider.create(credentials = GoogleAuthCredentials(serverId = WEB_CLIENT_ID))
+            appReady = true
+        }
+
+        if(appReady) SetupNavGraph()
     }
 }
