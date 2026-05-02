@@ -16,14 +16,14 @@ class HomeGraphViewModel(
         onError: (String) -> Unit,
     ) {
         viewModelScope.launch {
-           /* val result = withContext(Dispatchers.IO) {
+            val result = withContext(Dispatchers.IO) {
                 customerRepository.signOut()
             }
             if (result.isSuccess()) {
                 onSuccess()
             } else if (result.isError()) {
                 onError(result.getErrorMessage())
-            }*/
+            }
         }
     }
 }
