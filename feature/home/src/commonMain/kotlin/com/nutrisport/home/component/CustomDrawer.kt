@@ -31,6 +31,7 @@ fun CustomDrawer(
             .padding(horizontal = 12.dp)
     ) {
         Spacer(modifier = Modifier.height(50.dp))
+
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "NUTRISPORT",
@@ -39,6 +40,7 @@ fun CustomDrawer(
             fontFamily = BebasNeueFont(),
             fontSize = FontSize.EXTRA_LARGE
         )
+
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = "Healthy Lifestyle",
@@ -46,7 +48,10 @@ fun CustomDrawer(
             color = TextPrimary,
             fontSize = FontSize.REGULAR
         )
+
         Spacer(modifier = Modifier.height(50.dp))
+
+
         DrawerItem.entries.take(5).forEach { item ->
             DrawerItemCard(
                 drawerItem = item,
@@ -61,11 +66,14 @@ fun CustomDrawer(
             )
             Spacer(modifier = Modifier.height(12.dp))
         }
+
         Spacer(modifier = Modifier.weight(1f))
+
         DrawerItemCard(
             drawerItem = DrawerItem.Admin,
             onClick = onAdminPanelClick
         )
+
         Spacer(modifier = Modifier.height(24.dp))
     }
 }

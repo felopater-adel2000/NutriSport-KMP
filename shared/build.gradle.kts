@@ -43,6 +43,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
             implementation(libs.kotlinx.serialization)
+
+            // LogKat
+            implementation("io.github.prashant17d97:logkat:1.0.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

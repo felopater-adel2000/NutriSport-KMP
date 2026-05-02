@@ -33,6 +33,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onLayoutRectChanged
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -52,7 +56,9 @@ import com.nutrisport.shared.Resources
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
+import com.nutrisport.shared.logging.Log
 import com.nutrisport.shared.navigation.Screen
+import com.nutrisport.shared.util.getScreenWidth
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
@@ -76,7 +82,7 @@ fun HomeGraphScreen(
         }
     }
 
-    val screenWidth = remember { 100f }
+    val screenWidth = remember { getScreenWidth() }
     var drawerState by remember { mutableStateOf(CustomDrawerState.Closed) }
 
     val offsetValue by remember { derivedStateOf { (screenWidth / 1.5).dp } }
@@ -104,6 +110,7 @@ fun HomeGraphScreen(
             .fillMaxSize()
             .background(animatedBackground)
             .systemBarsPadding()
+            .onSizeChanged { size -> }
     ) {
         CustomDrawer(
             onProfileClick = {},
@@ -116,6 +123,7 @@ fun HomeGraphScreen(
             },
             onAdminPanelClick = {}
         )
+
         Box(
             modifier = Modifier
                 .fillMaxSize()

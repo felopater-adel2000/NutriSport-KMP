@@ -35,7 +35,7 @@ fun App() {
         val isUserLoggedIn = remember { customerRepo.getCurrentUserId() != null }
         val startDestination = remember {
             if (isUserLoggedIn) Screen.HomeGraph
-            else Screen.Auth
+            else Screen.HomeGraph
         }
 
         LaunchedEffect(Unit) {

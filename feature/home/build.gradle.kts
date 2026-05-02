@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.invoke
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -43,6 +44,9 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
 
+            // Kermit Logging
+            implementation("co.touchlab:kermit:2.1.0")
+
             implementation(project(":shared"))
             implementation(project(":data"))
         }
@@ -67,6 +71,6 @@ android {
 }
 
 dependencies {
-
+    debugImplementation(libs.compose.uiTooling)
 }
 
