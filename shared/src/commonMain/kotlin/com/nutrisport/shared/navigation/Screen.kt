@@ -1,4 +1,4 @@
-package com.nutrisport.navigation
+package com.nutrisport.shared.navigation
 
 import kotlinx.serialization.Serializable
 

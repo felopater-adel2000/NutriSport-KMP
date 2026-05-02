@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.mmk.kmpauth.google.GoogleAuthCredentials
 import com.mmk.kmpauth.google.GoogleAuthProvider
 import com.nutrisport.data.domin.CustomerRepository
-import com.nutrisport.navigation.Screen
+import com.nutrisport.shared.navigation.Screen
 import com.nutrisport.navigation.SetupNavGraph
 import com.nutrisport.shared.Constant.WEB_CLIENT_ID
 import org.jetbrains.compose.resources.painterResource
