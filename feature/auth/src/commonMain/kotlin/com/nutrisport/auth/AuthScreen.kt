@@ -32,13 +32,14 @@ import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
 import com.nutrisport.shared.TextWhite
 import kotlinx.coroutines.delay
+import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
 @Composable
 fun AuthScreen(
     navigateToHome: () -> Unit
 ) {
-
+    val viewModel: AuthViewModel = koinViewModel()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
 
@@ -93,7 +94,11 @@ fun AuthScreen(
                     linkAccount = false,
                     onResult = { result ->
                         result.onSuccess {
-                            messageBarState.addSuccess("Successfully signed in with Google.")
+                            viewModel.createCustomer(
+                                user = it,
+                                onSuccess = {  messageBarState.addSuccess("Successfully signed in with Google.") },
+                                onError = { errorMessage -> messageBarState.addError(errorMessage) }
+                            )
                             loadingState = false
                         }.onFailure { error ->
                             onFirebaseAuthReturnError(error, messageBarState)

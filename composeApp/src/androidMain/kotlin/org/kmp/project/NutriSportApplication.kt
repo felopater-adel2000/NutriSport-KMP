@@ -4,6 +4,7 @@ import android.app.Application
 import com.nutrisport.di.initializeKoin
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.initialize
+import org.koin.android.ext.koin.androidContext
 
 
 class NutriSportApplication : Application() {
