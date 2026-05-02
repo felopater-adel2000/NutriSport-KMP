@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,6 +33,7 @@ import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
 import com.nutrisport.shared.TextWhite
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
@@ -42,6 +44,8 @@ fun AuthScreen(
     val viewModel: AuthViewModel = koinViewModel()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
+
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold { padding ->
         ContentWithMessageBar(
@@ -96,7 +100,13 @@ fun AuthScreen(
                         result.onSuccess {
                             viewModel.createCustomer(
                                 user = it,
-                                onSuccess = {  messageBarState.addSuccess("Successfully signed in with Google.") },
+                                onSuccess = {
+                                    messageBarState.addSuccess("Successfully signed in with Google.")
+                                    coroutineScope.launch {
+                                        delay(1000)
+                                        navigateToHome()
+                                    }
+                                },
                                 onError = { errorMessage -> messageBarState.addError(errorMessage) }
                             )
                             loadingState = false

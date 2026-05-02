@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -21,7 +20,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "navigation"
+            baseName = "home"
             isStatic = true
         }
     }
@@ -36,12 +35,12 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.messagebar.kmp)
 
-            implementation(libs.kotlinx.serialization)
-            implementation(libs.compose.navigation)
 
-            implementation(project(":feature:auth"))
-            implementation(project(":feature:home"))
+
+            implementation(project(":shared"))
+            implementation(project(":data"))
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -50,7 +49,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.nutrisport.navigation"
+    namespace = "com.nutrisport.home"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -61,5 +60,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
+
+dependencies {
+
 }
 
