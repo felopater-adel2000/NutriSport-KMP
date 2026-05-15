@@ -12,7 +12,8 @@ data class Customer(
     val postalCode: Int? = null,
     val address: String? = null,
     val phoneNumber: PhoneNumber? = null,
-    val isAdmin: Boolean = false
+    val isAdmin: Boolean = false,
+    val cart: List<CartItem> = emptyList(),
 )
 
 

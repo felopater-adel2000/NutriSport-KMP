@@ -10,6 +10,7 @@ import nutrisport.shared.generated.resources.close
 import nutrisport.shared.generated.resources.delete
 import nutrisport.shared.generated.resources.dollar
 import nutrisport.shared.generated.resources.edit
+import nutrisport.shared.generated.resources.egypt
 import nutrisport.shared.generated.resources.google_logo
 import nutrisport.shared.generated.resources.grid
 import nutrisport.shared.generated.resources.home
@@ -71,5 +72,7 @@ object Resources {
         val India = Res.drawable.india
         val Usa = Res.drawable.usa
         val Serbia = Res.drawable.serbia
+
+        val Egypt = Res.drawable.egypt
     }
 }

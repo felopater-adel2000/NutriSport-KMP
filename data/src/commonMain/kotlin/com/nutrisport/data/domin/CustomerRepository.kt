@@ -1,7 +1,9 @@
 package com.nutrisport.data.domin
 
+import com.nutrisport.shared.domain.Customer
 import com.nutrisport.shared.util.RequestState
 import dev.gitlive.firebase.auth.FirebaseUser
+import kotlinx.coroutines.flow.Flow
 
 interface CustomerRepository {
 
@@ -9,6 +11,14 @@ interface CustomerRepository {
 
     suspend fun createCustomer(
         user: FirebaseUser?,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    )
+
+    fun readCustomerFlow(): Flow<RequestState<Customer>>
+
+    suspend fun updateCustomer(
+        customer: Customer,
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     )

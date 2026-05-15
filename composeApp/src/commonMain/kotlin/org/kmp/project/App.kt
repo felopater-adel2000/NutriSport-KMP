@@ -1,29 +1,22 @@
 package org.kmp.project
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.mmk.kmpauth.google.GoogleAuthCredentials
 import com.mmk.kmpauth.google.GoogleAuthProvider
 import com.nutrisport.data.domin.CustomerRepository
-import com.nutrisport.shared.navigation.Screen
 import com.nutrisport.navigation.SetupNavGraph
 import com.nutrisport.shared.Constant.WEB_CLIENT_ID
-import org.jetbrains.compose.resources.painterResource
-
-import nutrisport.composeapp.generated.resources.Res
-import nutrisport.composeapp.generated.resources.compose_multiplatform
+import com.nutrisport.shared.navigation.Screen
 import org.koin.compose.koinInject
 
 @Composable
@@ -35,7 +28,7 @@ fun App() {
         val isUserLoggedIn = remember { customerRepo.getCurrentUserId() != null }
         val startDestination = remember {
             if (isUserLoggedIn) Screen.HomeGraph
-            else Screen.HomeGraph
+            else Screen.Auth
         }
 
         LaunchedEffect(Unit) {

@@ -1,0 +1,61 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <group>
+        <!-- Circle Clip -->
+        <clip-path
+            android:pathData="M12,0A12,12 0,1 1,12 24A12,12 0,1 1,12 0Z"/>
+
+        <!-- White Background -->
+        <path
+            android:pathData="M0,0H24V24H0Z"
+            android:fillColor="#FFFFFF"/>
+
+        <!-- Red Top -->
+        <path
+            android:pathData="M0,0H24V8H0Z"
+            android:fillColor="#CE1126"/>
+
+        <!-- Black Bottom -->
+        <path
+            android:pathData="M0,16H24V24H0Z"
+            android:fillColor="#000000"/>
+
+        <!-- Golden Eagle (simplified Egypt emblem) -->
+        <path
+            android:pathData="M12,9.2
+                              C11.3,9.2 10.8,9.8 10.8,10.5
+                              V14.5
+                              C10.8,15.3 11.3,15.8 12,15.8
+                              C12.7,15.8 13.2,15.3 13.2,14.5
+                              V10.5
+                              C13.2,9.8 12.7,9.2 12,9.2Z"
+            android:fillColor="#C8A400"/>
+
+        <!-- Left Wing -->
+        <path
+            android:pathData="M10.8,10.2
+                              L9.3,11.2
+                              L10.2,12.2
+                              L10.8,11.5Z"
+            android:fillColor="#C8A400"/>
+
+        <!-- Right Wing -->
+        <path
+            android:pathData="M13.2,10.2
+                              L14.7,11.2
+                              L13.8,12.2
+                              L13.2,11.5Z"
+            android:fillColor="#C8A400"/>
+
+        <!-- Base -->
+        <path
+            android:pathData="M11.2,15.5H12.8V16.3H11.2Z"
+            android:fillColor="#C8A400"/>
+
+    </group>
+
+</vector>

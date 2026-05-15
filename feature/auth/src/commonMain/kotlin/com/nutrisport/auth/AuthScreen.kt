@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
 import com.nutrisport.auth.component.GoogleButton
 import com.nutrisport.shared.Alpha
@@ -32,6 +31,7 @@ import com.nutrisport.shared.SurfaceError
 import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
 import com.nutrisport.shared.TextWhite
+import com.nutrisport.shared.logging.Log
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
@@ -98,19 +98,25 @@ fun AuthScreen(
                     linkAccount = false,
                     onResult = { result ->
                         result.onSuccess {
+                            Log.d("AuthScreen.kt", "AuthScreen @101: $it")
                             viewModel.createCustomer(
                                 user = it,
                                 onSuccess = {
+                                    Log.d("AuthScreen.kt", "AuthScreen @106: Successfully created customer.")
                                     messageBarState.addSuccess("Successfully signed in with Google.")
                                     coroutineScope.launch {
                                         delay(1000)
                                         navigateToHome()
                                     }
                                 },
-                                onError = { errorMessage -> messageBarState.addError(errorMessage) }
+                                onError = { errorMessage ->
+                                    Log.d("AuthScreen.kt", "AuthScreen @111: Failed to create customer. Error: $errorMessage")
+                                    messageBarState.addError(errorMessage)
+                                }
                             )
                             loadingState = false
                         }.onFailure { error ->
+                            Log.d("AuthScreen.kt", "AuthScreen @109: ${error.message}")
                             onFirebaseAuthReturnError(error, messageBarState)
                             loadingState = false
                         }
@@ -119,6 +125,7 @@ fun AuthScreen(
                     GoogleButton(
                         loading = loadingState,
                         onClick = {
+                            Log.d("AuthScreen.kt", "AuthScreen @121: ")
                             loadingState = true
                             this@GoogleButtonUiContainerFirebase.onClick()
                         }

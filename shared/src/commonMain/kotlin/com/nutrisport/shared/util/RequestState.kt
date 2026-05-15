@@ -19,10 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
-sealed class RequestState<T> {
+sealed class RequestState<out T> {
     data object Idle : RequestState<Nothing>()
     data object Loading : RequestState<Nothing>()
-    data class Success<T>(val data: T) : RequestState<T>()
+    data class Success<out T>(val data: T) : RequestState<T>()
     data class Error(val message: String) : RequestState<Nothing>()
 
     fun isIdle(): Boolean = this is Idle
@@ -33,14 +33,6 @@ sealed class RequestState<T> {
     fun getSuccessData() = (this as Success).data
     fun getSuccessDataOrNull() = if (this.isSuccess()) this.getSuccessData() else null
     fun getErrorMessage(): String = (this as Error).message
-
-
-    fun update(updateFunction: (T) -> T): RequestState<out T> {
-        if(this !is Success) return RequestState.Error("Cannot update data in a non-success state")
-        val updatedData = updateFunction(data)
-        return Success(updatedData)
-    }
-
 }
 
 @Composable

@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -43,6 +42,7 @@ kotlin {
 
             implementation(project(":feature:auth"))
             implementation(project(":feature:home"))
+            implementation(project(":feature:profile"))
             implementation(project(":data"))
 
         }
